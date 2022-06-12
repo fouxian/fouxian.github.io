@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Sqoop 数据迁移工具 | Keep Running</title>
+    <meta name="generator" content="VuePress 1.9.7">
+    <link rel="icon" href="/favicon.png">
+    <script charset="utf-8" async="async" src="/js/jquery.min.js"></script>
+    <script charset="utf-8" async="async" src="/js/global.js"></script>
+    <script charset="utf-8" async="async" src="/js/fingerprint2.min.js"></script>
+    <meta name="description" content="">
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="Expires" content="0">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    
+    <link rel="preload" href="/assets/css/0.styles.42b858ce.css" as="style"><link rel="preload" href="/assets/js/app.cfd60917.js" as="script"><link rel="preload" href="/assets/js/4.8234885e.js" as="script"><link rel="preload" href="/assets/js/3.1429892b.js" as="script"><link rel="preload" href="/assets/js/17.c6bbe2be.js" as="script"><link rel="prefetch" href="/assets/js/10.0f0de338.js"><link rel="prefetch" href="/assets/js/11.0c47d372.js"><link rel="prefetch" href="/assets/js/12.b45ce082.js"><link rel="prefetch" href="/assets/js/13.f2032214.js"><link rel="prefetch" href="/assets/js/14.0a8927b2.js"><link rel="prefetch" href="/assets/js/15.9ab1d206.js"><link rel="prefetch" href="/assets/js/16.f03f2e40.js"><link rel="prefetch" href="/assets/js/18.e08bb862.js"><link rel="prefetch" href="/assets/js/19.c00af7cb.js"><link rel="prefetch" href="/assets/js/20.35396483.js"><link rel="prefetch" href="/assets/js/21.fe05d239.js"><link rel="prefetch" href="/assets/js/22.80eaa289.js"><link rel="prefetch" href="/assets/js/23.bce5e854.js"><link rel="prefetch" href="/assets/js/24.fa104861.js"><link rel="prefetch" href="/assets/js/25.2c725be9.js"><link rel="prefetch" href="/assets/js/26.fc7addb7.js"><link rel="prefetch" href="/assets/js/27.fc831a66.js"><link rel="prefetch" href="/assets/js/28.3784f580.js"><link rel="prefetch" href="/assets/js/29.7e78aa5c.js"><link rel="prefetch" href="/assets/js/30.b074fddd.js"><link rel="prefetch" href="/assets/js/31.059ebf27.js"><link rel="prefetch" href="/assets/js/32.12570018.js"><link rel="prefetch" href="/assets/js/33.d0dc971f.js"><link rel="prefetch" href="/assets/js/34.c9b46696.js"><link rel="prefetch" href="/assets/js/35.77a81c6a.js"><link rel="prefetch" href="/assets/js/36.6048e328.js"><link rel="prefetch" href="/assets/js/37.b9f285de.js"><link rel="prefetch" href="/assets/js/38.ac5a2abf.js"><link rel="prefetch" href="/assets/js/39.97ca52cb.js"><link rel="prefetch" href="/assets/js/40.1689d33f.js"><link rel="prefetch" href="/assets/js/41.4d2d8182.js"><link rel="prefetch" href="/assets/js/42.8647a8ff.js"><link rel="prefetch" href="/assets/js/43.f867a280.js"><link rel="prefetch" href="/assets/js/44.a51272ee.js"><link rel="prefetch" href="/assets/js/45.c31e6474.js"><link rel="prefetch" href="/assets/js/46.fe85ae54.js"><link rel="prefetch" href="/assets/js/47.dc8a97d4.js"><link rel="prefetch" href="/assets/js/48.c97f7726.js"><link rel="prefetch" href="/assets/js/49.ac219d14.js"><link rel="prefetch" href="/assets/js/5.963fada3.js"><link rel="prefetch" href="/assets/js/50.926ecfa5.js"><link rel="prefetch" href="/assets/js/51.e776b5b1.js"><link rel="prefetch" href="/assets/js/52.4938314c.js"><link rel="prefetch" href="/assets/js/53.6b4d7266.js"><link rel="prefetch" href="/assets/js/54.bfaf622b.js"><link rel="prefetch" href="/assets/js/55.c6d160b9.js"><link rel="prefetch" href="/assets/js/56.31f6843c.js"><link rel="prefetch" href="/assets/js/57.55cbf7b8.js"><link rel="prefetch" href="/assets/js/58.8174871d.js"><link rel="prefetch" href="/assets/js/59.3eee2bde.js"><link rel="prefetch" href="/assets/js/6.b2e36a75.js"><link rel="prefetch" href="/assets/js/60.233a32ed.js"><link rel="prefetch" href="/assets/js/61.defb83ac.js"><link rel="prefetch" href="/assets/js/62.442070cd.js"><link rel="prefetch" href="/assets/js/63.cc121456.js"><link rel="prefetch" href="/assets/js/64.c8f83f5d.js"><link rel="prefetch" href="/assets/js/65.b9bc8c1c.js"><link rel="prefetch" href="/assets/js/7.fb6689bf.js"><link rel="prefetch" href="/assets/js/8.e390cc6b.js"><link rel="prefetch" href="/assets/js/9.c03c9dfe.js"><link rel="prefetch" href="/assets/js/vendors~docsearch.db8a86c9.js">
+    <link rel="stylesheet" href="/assets/css/0.styles.42b858ce.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="theme-container"><header class="navbar"><div class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/" class="home-link router-link-active"><!----> <span class="site-name">Keep Running</span></a> <div class="links"><div class="search-box"><input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <nav class="nav-links can-hide"><div class="nav-item"><a href="/kr/java/jvm/自动内存管理.html" class="nav-link">
+  Java
+</a></div><div class="nav-item"><a href="/kr/database/database.html" class="nav-link">
+  数据库
+</a></div><div class="nav-item"><a href="/kr/spring/MVC-IOC-AOP.html" class="nav-link">
+  Spring
+</a></div><div class="nav-item"><a href="/kr/middleware/redis/redis-base.html" class="nav-link">
+  Redis/Zookeeper/Kafka
+</a></div><div class="nav-item"><a href="/kr/bigdata/hadoop/Hadoop-分布式集群容器部署.html" class="nav-link">
+  大数据
+</a></div> <!----></nav></div></header> <div class="sidebar-mask"></div> <aside class="sidebar"><nav class="nav-links"><div class="nav-item"><a href="/kr/java/jvm/自动内存管理.html" class="nav-link">
+  Java
+</a></div><div class="nav-item"><a href="/kr/database/database.html" class="nav-link">
+  数据库
+</a></div><div class="nav-item"><a href="/kr/spring/MVC-IOC-AOP.html" class="nav-link">
+  Spring
+</a></div><div class="nav-item"><a href="/kr/middleware/redis/redis-base.html" class="nav-link">
+  Redis/Zookeeper/Kafka
+</a></div><div class="nav-item"><a href="/kr/bigdata/hadoop/Hadoop-分布式集群容器部署.html" class="nav-link">
+  大数据
+</a></div> <!----></nav>  <ul class="sidebar-links"><li><section class="sidebar-group depth-0"><p class="sidebar-heading"><span>Hadoop</span> <!----></p> <ul class="sidebar-links sidebar-group-items"><li><a href="/kr/bigdata/hadoop/Hadoop-分布式集群容器部署.html" class="sidebar-link">Hadoop概述及分布式集群容器化部署</a></li><li><a href="/kr/bigdata/hadoop/分布式文件系统-HDFS-体系架构及原理.html" class="sidebar-link">分布式文件系统 HDFS 体系架构及原理</a></li><li><a href="/kr/bigdata/hadoop/分布式并行计算-MapReduce-概述及原理.html" class="sidebar-link">分布式并行计算 MapReduce 概述及原理</a></li><li><a href="/kr/bigdata/hadoop/集群资源管理与调度平台-YARN-概述及原理.html" class="sidebar-link">集群资源管理与调度平台 YARN 概述及原理</a></li><li><a href="/kr/bigdata/hadoop/MapReduce-实例-WordCount.html" class="sidebar-link">MapReduce 经典案例：WordCount</a></li><li><a href="/kr/bigdata/hadoop/HDFS-3-X-纠删码.html" class="sidebar-link">HDFS 3.X 纠删码</a></li><li><a href="/kr/bigdata/hadoop/大数据生态圈与离线实时数据平台实践.html" class="sidebar-link">大数据生态圈与离线实时数据平台实践</a></li></ul></section></li><li><section class="sidebar-group depth-0"><p class="sidebar-heading"><span>Hive</span> <!----></p> <ul class="sidebar-links sidebar-group-items"><li><a href="/kr/bigdata/hive/分布式数据仓库-Hive.html" class="sidebar-link">分布式数据仓库 Hive</a></li><li><a href="/kr/bigdata/hive/Hive-SQL.html" class="sidebar-link">Hive SQL 执行计划|数据倾斜|性能优化</a></li><li><a href="/kr/bigdata/hive/HiveSQL-编译过程.html" class="sidebar-link">Hive 工作原理：Hive SQL 编译过程</a></li><li><a href="/kr/bigdata/hive/Hive-function.html" class="sidebar-link">Hive Function</a></li><li><a href="/kr/bigdata/hive/Hive-SQL-Examples.html" class="sidebar-link">Hive SQL Examples</a></li></ul></section></li><li><section class="sidebar-group depth-0"><p class="sidebar-heading"><span>Spark</span> <!----></p> <ul class="sidebar-links sidebar-group-items"><li><a href="/kr/bigdata/spark/Spark-概述与集群部署模式.html" class="sidebar-link">Spark 概述与集群部署模式</a></li><li><a href="/kr/bigdata/spark/Spark-RDD-弹性分布式数据集.html" class="sidebar-link">Spark RDD 弹性分布式数据集</a></li><li><a href="/kr/bigdata/spark/Spark-运行架构.html" class="sidebar-link">Spark 运行架构及作业提交流程</a></li><li><a href="/kr/bigdata/spark/Spark-Streaming.html" class="sidebar-link">Spark Streaming</a></li><li><a href="/kr/bigdata/spark/Spark-sql.html" class="sidebar-link">Spark SQL</a></li></ul></section></li><li><section class="sidebar-group depth-0"><p class="sidebar-heading open"><span>Other</span> <!----></p> <ul class="sidebar-links sidebar-group-items"><li><a href="/kr/bigdata/Canal-MySQL-binlog-增量订阅与消费组件.html" class="sidebar-link">Canal：MySQL Binlog 增量订阅与消费组件</a></li><li><a href="/kr/bigdata/Sqoop-数据迁移工具.html" class="active sidebar-link">Sqoop 数据迁移工具</a></li><li><a href="/kr/bigdata/Flume-基本架构及应用场景.html" class="sidebar-link">Flume 基本架构及应用场景</a></li><li><a href="/kr/bigdata/Azkaban-编译镜像及基本使用.html" class="sidebar-link">Azkaban 编译镜像及基本使用</a></li><li><a href="/kr/bigdata/Maxwell.html" class="sidebar-link">Maxwell</a></li><li><a href="/kr/bigdata/Elaticsearch.html" class="sidebar-link">Elaticsearch</a></li><li><a href="/kr/bigdata/大数据可视化交互平台-Hue.html" class="sidebar-link">大数据可视化交互平台 Hue</a></li></ul></section></li></ul> </aside> <div><main class="page"> <div class="theme-default-content content__default"><h1 id="sqoop-数据迁移工具"><a href="#sqoop-数据迁移工具" class="header-anchor">#</a> Sqoop 数据迁移工具</h1> <p>Sqoop 是一个常用的数据迁移工具，主要用于在不同存储系统之间实现数据的导入与导出，
+其原理是将执行命令转化成 MapReduce 作业来实现数据的迁移，在 MapReduce 中主要是对 inputformat/outputformat 进行定制</p> <ul><li>导入数据：从 MySQL，Oracle 等关系型数据库中导入数据到 HDFS、Hive、HBase 等分布式文件存储系统中</li> <li>导出数据：从分布式文件系统中导出数据到关系数据库中</li></ul> <p>其原理是将执行命令转化成 MapReduce 作业来实现数据的迁移，在 MapReduce 中主要是对 inputformat/outputformat 进行定制：
+<img src="/images/kr/bigdata/sqoop/sqoop-tool.png" alt=""></p> <h2 id="sqoop-导入过程"><a href="#sqoop-导入过程" class="header-anchor">#</a> Sqoop 导入过程</h2> <p><img src="/images/kr/bigdata/sqoop/Sqoop-%E5%AF%BC%E5%85%A5%E8%BF%87%E7%A8%8B.png" alt=""></p> <h2 id="sqoop-导出过程"><a href="#sqoop-导出过程" class="header-anchor">#</a> Sqoop 导出过程</h2> <p><img src="/images/kr/bigdata/sqoop/Sqoop-%E5%AF%BC%E5%87%BA%E8%BF%87%E7%A8%8B.png" alt=""></p> <h2 id="sqoop-镜像"><a href="#sqoop-镜像" class="header-anchor">#</a> Sqoop 镜像</h2> <div class="language-bash Dockerfile line-numbers-mode"><pre class="language-bash"><code>FROM xzx/hadoop-3.2.2
+RUN yum -y <span class="token function">install</span> <span class="token function">wget</span>
+RUN <span class="token function">wget</span> -nv http://archive.apache.org/dist/sqoop/1.4.7/sqoop-1.4.7.bin__hadoop-2.6.0.tar.gz <span class="token operator">&amp;&amp;</span> <span class="token punctuation">\</span>
+        <span class="token function">tar</span> -zxvf sqoop-1.4.7.bin__hadoop-2.6.0.tar.gz -C /usr/local <span class="token operator">&gt;</span> /dev/null <span class="token operator">&amp;&amp;</span> <span class="token punctuation">\</span>
+        <span class="token function">rm</span> sqoop-1.4.7.bin__hadoop-2.6.0.tar.gz <span class="token operator">&amp;&amp;</span> <span class="token punctuation">\</span>
+        <span class="token function">mv</span> /usr/local/sqoop-1.4.7.bin__hadoop-2.6.0/ /usr/local/sqoop-1.4.7
+ENV SQOOP_HOME /usr/local/sqoop-1.4.7
+ENV <span class="token environment constant">PATH</span> <span class="token variable">$SQOOP_HOME</span>/bin:<span class="token environment constant">$PATH</span>
+COPY mysql-connector-java-8.0.21.jar <span class="token variable">$SQOOP_HOME</span>/lib
+COPY commons-lang-2.6.jar <span class="token variable">$SQOOP_HOME</span>/lib
+RUN <span class="token function">cp</span> <span class="token variable">$SQOOP_HOME</span>/conf/sqoop-env-template.sh <span class="token variable">$SQOOP_HOME</span>/conf/sqoop-env.sh
+RUN <span class="token builtin class-name">echo</span> <span class="token string">'export HADOOP_COMMON_HOME=/usr/local/hadoop-3.2.2'</span> <span class="token operator">&gt;&gt;</span> <span class="token variable">$SQOOP_HOME</span>/conf/sqoop-env.sh
+RUN <span class="token builtin class-name">echo</span> <span class="token string">'export HADOOP_MAPRED_HOME=/usr/local/hadoop-3.2.2'</span> <span class="token operator">&gt;&gt;</span> <span class="token variable">$SQOOP_HOME</span>/conf/sqoop-env.sh
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br></div></div><div class="language-bash line-numbers-mode"><pre class="language-bash"><code><span class="token comment"># 查询所有数据库</span>
+sqoop list-databases --connect jdbc:mysql://192.168.72.1:3306?serverTimezone<span class="token operator">=</span>UTC --username hue --password hue
+<span class="token comment"># 查询指定数据库的数据表</span>
+sqoop list-tables --connect jdbc:mysql://192.168.72.1:3306?serverTimezone<span class="token operator">=</span>UTC --username hue --password hue
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br></div></div><h2 id="mysql-与-hdfs、hive、hbase-导入导出"><a href="#mysql-与-hdfs、hive、hbase-导入导出" class="header-anchor">#</a> MySQL 与 HDFS、Hive、HBase 导入导出</h2> <div class="language-bash line-numbers-mode"><pre class="language-bash"><code><span class="token comment"># MySQL 数据导入 HDFS，导入命令</span>
+sqoop <span class="token function">import</span> --connect jdbc:mysql://192.168.72.1:3306/mysql?serverTimezone<span class="token operator">=</span>UTC --username root --password root 
+    --table help_keyword            <span class="token comment"># 待导入的表</span>
+    --delete-target-dir             <span class="token comment"># 目标目录存在则先删除</span>
+    --target-dir /sqoop             <span class="token comment"># 导入的目标目录</span>
+    --fields-terminated-by <span class="token string">'\t'</span>     <span class="token comment"># 指定导出数据的分隔符</span>
+    -m <span class="token number">3</span>                            <span class="token comment"># 指定并行执行的 map tasks 数量</span>
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br></div></div><p>输入数据被平均 split 为三份，分别由三个 map task 进行处理。数据默认以表的主键列作为拆分依据，如果表没有主键，有以下两种方案：</p> <ul><li>添加 --autoreset-to-one-mapper 参数，代表只启动一个 map task，即不并行执行</li> <li>若仍希望并行执行，则可以使用 <code>--split-by &lt;column-name&gt;</code> 指明拆分数据的参考列</li></ul> <div class="language-bash line-numbers-mode"><pre class="language-bash"><code><span class="token comment"># HDFS 数据导出到 MySQL，导出命令</span>
+sqoop <span class="token builtin class-name">export</span> --connect jdbc:mysql://192.168.72.1:3306/mysql?serverTimezone<span class="token operator">=</span>UTC 
+    --username root --password root
+    --table help_keyword_from_hdfs         <span class="token comment"># 导出数据存储在 MySQL 的 help_keyword_from_hdf 的表中</span>
+    --export-dir /sqoop  
+    --input-fields-terminated-by <span class="token string">'\t'</span>
+    --m <span class="token number">3</span> 
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br></div></div><div class="language-bash line-numbers-mode"><pre class="language-bash"><code><span class="token comment"># MySQL 数据导入到 Hive，Sqoop 导入数据到 Hive 是通过先将数据导入到 HDFS 上的临时目录，</span>
+<span class="token comment"># 然后再将数据从 HDFS 上 Load 到 Hive 中，最后将临时目录删除</span>
+sqoop <span class="token function">import</span> --connect jdbc:mysql://192.168.72.1:3306/mysql?serverTimezone<span class="token operator">=</span>UTC
+  --username root --password root
+  --table help_keyword         <span class="token comment"># 待导入的表     </span>
+  --delete-target-dir          <span class="token comment"># 如果临时目录存在删除</span>
+  --target-dir /sqoop_hive     <span class="token comment"># 临时目录位置</span>
+  --hive-database sqoop_test   <span class="token comment"># 导入到 Hive 的 sqoop_test 数据库，数据库需要预先创建。不指定则默认为 default 库</span>
+  --hive-import                <span class="token comment"># 导入到 Hive</span>
+  --hive-overwrite             <span class="token comment"># 如果 Hive 表中有数据则覆盖，这会清除表中原有的数据，然后再写入</span>
+  -m <span class="token number">3</span>                         <span class="token comment"># 并行度</span>
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br></div></div><div class="language-bash line-numbers-mode"><pre class="language-bash"><code><span class="token comment"># Hive 导出数据到 MySQL，实际上就是 HDFS 导出数据到 MySQL</span>
+sqoop <span class="token builtin class-name">export</span> --connect jdbc:mysql://192.168.72.1:3306/mysql?serverTimezone<span class="token operator">=</span>UTC
+    --username root --password root
+    --table help_keyword_from_hive 
+    --export-dir /user/hive/warehouse/sqoop_test.db/help_keyword 
+    --input-fields-terminated-by <span class="token string">'\001'</span>              <span class="token comment"># 需要注意的是 hive 中默认的分隔符为 \001</span>
+    --m <span class="token number">3</span> 
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br></div></div><div class="language-bash line-numbers-mode"><pre class="language-bash"><code><span class="token comment"># MySQL 导入数据到 HBase</span>
+<span class="token comment"># 将 help_keyword 表中数据导入到 HBase 上的 help_keyword_hbase 表中，</span>
+<span class="token comment"># 使用原表的主键 help_keyword_id 作为 RowKey，原表的所有列都会在 keywordInfo 列族下，</span>
+<span class="token comment"># 目前只支持全部导入到一个列族下，不支持分别指定列族</span>
+sqoop <span class="token function">import</span> --connect jdbc:mysql://192.168.72.1:3306/mysql?serverTimezone<span class="token operator">=</span>UTC
+    --username root --password root 
+    --table help_keyword                <span class="token comment"># 待导入的表</span>
+    --hbase-table help_keyword_hbase    <span class="token comment"># hbase 表名称，表需要预先创建</span>
+    --column-family keywordInfo         <span class="token comment"># 所有列导入到 keywordInfo 列族下 </span>
+    --hbase-row-key help_keyword_id     <span class="token comment"># 使用原表的 help_keyword_id 作为 RowKey</span>
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br></div></div><h2 id="全量导入"><a href="#全量导入" class="header-anchor">#</a> 全量导入</h2> <p>Sqoop 支持通过 import-all-tables 命令进行全量导入到 HDFS/Hive，但需要注意有以下两个限制：</p> <ul><li>所有表必须有主键；或者使用 --autoreset-to-one-mapper，代表只启动一个 map task</li> <li>不能使用非默认的分割列，也不能通过 WHERE 子句添加任何限制</li></ul> <div class="language-bash line-numbers-mode"><pre class="language-bash"><code><span class="token comment"># 全量导入到 HDFS</span>
+sqoop import-all-tables --connect jdbc:mysql://192.168.72.1:3306/mysql?serverTimezone<span class="token operator">=</span>UTC 
+    --username root --password root 
+    --warehouse-dir  /sqoop_all       <span class="token comment"># 每个表会单独导出到一个目录，需要用此参数指明所有目录的父目录</span>
+    --fields-terminated-by <span class="token string">'\t'</span>
+    -m <span class="token number">3</span>
+<span class="token comment"># 全量导入到 Hive</span>
+sqoop import-all-tables -Dorg.apache.sqoop.splitter.allow_text_splitter<span class="token operator">=</span>true 
+  --connect jdbc:mysql://192.168.72.1:3306/mysql?serverTimezone<span class="token operator">=</span>UTC 
+  --username root --password root 
+  --hive-database sqoop_test          <span class="token comment"># 导出到 Hive 对应的库   </span>
+  --hive-import 
+  --hive-overwrite 
+  -m <span class="token number">3</span>
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br></div></div><h2 id="增量导入"><a href="#增量导入" class="header-anchor">#</a> 增量导入</h2> <div class="language-bash line-numbers-mode"><pre class="language-bash"><code><span class="token comment"># Sqoop 支持使用 query 参数定义查询 SQL，从而进行手动的增量导入</span>
+sqoop <span class="token function">import</span> --connect jdbc:mysql://192.168.72.1:3306/mysql?serverTimezone<span class="token operator">=</span>UTC
+  --username root --password root 
+  --query <span class="token string">'select * from help_keyword where $CONDITIONS and help_keyword_id &lt; 50'</span> 
+  --delete-target-dir            
+  --target-dir /sqoop_hive   
+  --hive-database sqoop_test            <span class="token comment"># 指定导入目标数据库 不指定则默认使用 Hive 中的 default 库</span>
+  --hive-table filter_help_keyword      <span class="token comment"># 指定导入目标表</span>
+  --split-by help_keyword_id            <span class="token comment"># 指定用于 split 的列      </span>
+  --hive-import                         <span class="token comment"># 导入到 Hive</span>
+  --hive-overwrite
+  -m <span class="token number">3</span>
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br></div></div><p>在使用 query 进行数据过滤时，需要注意以下三点：</p> <ul><li>必须用 --hive-table 指明目标表</li> <li>如果并行度 -m 不为 1 或者没有指定 --autoreset-to-one-mapper，则需要用 --split-by 指明参考列</li> <li>SQL 的 where 字句必须包含 $CONDITIONS，这是固定写法，作用是动态替换</li></ul> <div class="language-bash line-numbers-mode"><pre class="language-bash"><code><span class="token comment"># 增量导入：依靠维护的参考列来判断哪些是增量数据</span>
+sqoop <span class="token function">import</span> --connect jdbc:mysql://192.168.72.1:3306/mysql?serverTimezone<span class="token operator">=</span>UTC
+    --username root --password root 
+    --table help_keyword 
+    --target-dir /sqoop_hive  
+    --hive-database sqoop_test          
+    --incremental  append               <span class="token comment"># 指明模式</span>
+    --check-column  help_keyword_id     <span class="token comment"># 指明用于增量导入的参考列</span>
+    --last-value <span class="token number">300</span>                    <span class="token comment"># 指定参考列上次导入的最大值</span>
+    --hive-import <span class="token punctuation">\</span>   
+    -m <span class="token number">3</span>  
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br></div></div><p>incremental 参数有以下两个可选的选项：</p> <ul><li>append：要求参考列的值必须是递增的，所有大于 last-value 的值都会被导入</li> <li>lastmodified：要求参考列的值必须是 timestamp 类型，且插入数据时要在参考列插入当前时间戳，更新数据时也要更新参考列的时间戳，所有时间晚于 last-value 的数据都会被导入</li></ul> <h2 id="导入导出脚本"><a href="#导入导出脚本" class="header-anchor">#</a> 导入导出脚本</h2> <div class="language-bash line-numbers-mode"><pre class="language-bash"><code><span class="token comment"># 导入导出脚本以 .opt 为后缀</span>
+sqoop --options-file 导入导出脚本.opt
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br></div></div></div> <footer class="page-edit"><!----> <div class="last-updated"><span class="prefix">上次更新: </span> <span class="time">2022/6/8</span></div></footer> <div class="page-nav"><p class="inner"><span class="prev">
+        ←
+        <a href="/kr/bigdata/Canal-MySQL-binlog-增量订阅与消费组件.html" class="prev">
+          Canal：MySQL Binlog 增量订阅与消费组件
+        </a></span> <span class="next"><a href="/kr/bigdata/Flume-基本架构及应用场景.html">
+          Flume 基本架构及应用场景
+        </a>
+        →
+      </span></p></div> </main></div> <aside class="page-sidebar"> <div class="page-side-toolbar"><div class="option-box-toc-fixed"><div class="toc-container-sidebar"><div class="pos-box"><div class="icon-arrow"></div> <div class="scroll-box" style="max-height:650px"><div style="font-weight:bold;text-align:center;">Sqoop 数据迁移工具</div> <hr> <div class="toc-box"><ul class="toc-sidebar-links"><li><a href="/kr/bigdata/Sqoop-%E6%95%B0%E6%8D%AE%E8%BF%81%E7%A7%BB%E5%B7%A5%E5%85%B7.html#sqoop-导入过程" class="toc-sidebar-link">Sqoop 导入过程</a><ul class="toc-sidebar-sub-headers"></ul></li><li><a href="/kr/bigdata/Sqoop-%E6%95%B0%E6%8D%AE%E8%BF%81%E7%A7%BB%E5%B7%A5%E5%85%B7.html#sqoop-导出过程" class="toc-sidebar-link">Sqoop 导出过程</a><ul class="toc-sidebar-sub-headers"></ul></li><li><a href="/kr/bigdata/Sqoop-%E6%95%B0%E6%8D%AE%E8%BF%81%E7%A7%BB%E5%B7%A5%E5%85%B7.html#sqoop-镜像" class="toc-sidebar-link">Sqoop 镜像</a><ul class="toc-sidebar-sub-headers"></ul></li><li><a href="/kr/bigdata/Sqoop-%E6%95%B0%E6%8D%AE%E8%BF%81%E7%A7%BB%E5%B7%A5%E5%85%B7.html#mysql-与-hdfs、hive、hbase-导入导出" class="toc-sidebar-link">MySQL 与 HDFS、Hive、HBase 导入导出</a><ul class="toc-sidebar-sub-headers"></ul></li><li><a href="/kr/bigdata/Sqoop-%E6%95%B0%E6%8D%AE%E8%BF%81%E7%A7%BB%E5%B7%A5%E5%85%B7.html#全量导入" class="toc-sidebar-link">全量导入</a><ul class="toc-sidebar-sub-headers"></ul></li><li><a href="/kr/bigdata/Sqoop-%E6%95%B0%E6%8D%AE%E8%BF%81%E7%A7%BB%E5%B7%A5%E5%85%B7.html#增量导入" class="toc-sidebar-link">增量导入</a><ul class="toc-sidebar-sub-headers"></ul></li><li><a href="/kr/bigdata/Sqoop-%E6%95%B0%E6%8D%AE%E8%BF%81%E7%A7%BB%E5%B7%A5%E5%85%B7.html#导入导出脚本" class="toc-sidebar-link">导入导出脚本</a><ul class="toc-sidebar-sub-headers"></ul></li></ul></div></div></div></div></div> <div class="option-box-toc-over"><img src="/images/system/toc.png" class="nozoom"> <span class="show-txt">目录</span> <div class="toc-container"><div class="pos-box"><div class="icon-arrow"></div> <div class="scroll-box" style="max-height:550px"><div style="font-weight:bold;text-align:center;">Sqoop 数据迁移工具</div> <hr> <div class="toc-box"><ul class="toc-sidebar-links"><li><a href="/kr/bigdata/Sqoop-%E6%95%B0%E6%8D%AE%E8%BF%81%E7%A7%BB%E5%B7%A5%E5%85%B7.html#sqoop-导入过程" class="toc-sidebar-link">Sqoop 导入过程</a><ul class="toc-sidebar-sub-headers"></ul></li><li><a href="/kr/bigdata/Sqoop-%E6%95%B0%E6%8D%AE%E8%BF%81%E7%A7%BB%E5%B7%A5%E5%85%B7.html#sqoop-导出过程" class="toc-sidebar-link">Sqoop 导出过程</a><ul class="toc-sidebar-sub-headers"></ul></li><li><a href="/kr/bigdata/Sqoop-%E6%95%B0%E6%8D%AE%E8%BF%81%E7%A7%BB%E5%B7%A5%E5%85%B7.html#sqoop-镜像" class="toc-sidebar-link">Sqoop 镜像</a><ul class="toc-sidebar-sub-headers"></ul></li><li><a href="/kr/bigdata/Sqoop-%E6%95%B0%E6%8D%AE%E8%BF%81%E7%A7%BB%E5%B7%A5%E5%85%B7.html#mysql-与-hdfs、hive、hbase-导入导出" class="toc-sidebar-link">MySQL 与 HDFS、Hive、HBase 导入导出</a><ul class="toc-sidebar-sub-headers"></ul></li><li><a href="/kr/bigdata/Sqoop-%E6%95%B0%E6%8D%AE%E8%BF%81%E7%A7%BB%E5%B7%A5%E5%85%B7.html#全量导入" class="toc-sidebar-link">全量导入</a><ul class="toc-sidebar-sub-headers"></ul></li><li><a href="/kr/bigdata/Sqoop-%E6%95%B0%E6%8D%AE%E8%BF%81%E7%A7%BB%E5%B7%A5%E5%85%B7.html#增量导入" class="toc-sidebar-link">增量导入</a><ul class="toc-sidebar-sub-headers"></ul></li><li><a href="/kr/bigdata/Sqoop-%E6%95%B0%E6%8D%AE%E8%BF%81%E7%A7%BB%E5%B7%A5%E5%85%B7.html#导入导出脚本" class="toc-sidebar-link">导入导出脚本</a><ul class="toc-sidebar-sub-headers"></ul></li></ul></div></div></div></div></div></div>  </aside></div><div class="global-ui"></div></div>
+    <script src="/assets/js/app.cfd60917.js" defer></script><script src="/assets/js/4.8234885e.js" defer></script><script src="/assets/js/3.1429892b.js" defer></script><script src="/assets/js/17.c6bbe2be.js" defer></script>
+  </body>
+</html>
